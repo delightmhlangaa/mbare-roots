@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><title>Booking</title><style>body{background:#fff8f0;font-family:Arial;margin:0}header{background:#b91c1c;color:white;padding:15px 30px;display:flex;justify-content:space-between}nav a{color:white;margin-left:20px;text-decoration:none;font-weight:bold}section{padding:40px;max-width:600px;margin:auto}h2{color:#b91c1c;text-align:center}form{background:white;padding:25px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1)}label{display:block;margin-top:15px;font-weight:bold}input,select,textarea{width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box}button{width:100%;background:#b91c1c;color:white;padding:12px;border:none;border-radius:6px;margin-top:20px;font-size:16px;font-weight:bold;cursor:pointer}footer{background:#222;color:white;text-align:center;padding:20px;margin-top:40px}</style></head><body>
+<header><h1>MBARE ROOTS</h1><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="booking.html">Booking</a></nav></header>
+<section><h2>Book Your Mbare Tour</h2>
+<form>
+<label>Your Name</label><input id="name" placeholder="Tendayi" required>
+<label>WhatsApp Number</label><input id="phone" placeholder="0774707237" required>
+<label>Which Tour?</label><select id="tour"><option>Walking Tour - $25</option><option>Food Tour - $35</option><option>Market + Food - $50</option></select>
+<label>Choose Your Guide</label><select id="guide" onchange="upWA()"><option value="263777146776">Bianca - 0777146776</option><option value="263774134222">Delight - 0774134222</option><option value="263781431830">ELISHA MOYO - 0781431830</option><option value="263773957522">George - 0773957522</option><option value="263775141905">Tanaka - 0775141905</option><option value="263786600924">Tawananyasha - 0786600924</option><option value="263787879366">VEQUEA - 0787879366</option></select>
+<label>Date</label><input type="date" id="date" required>
+<label>Message</label><textarea id="msg" placeholder="Enjoying the places"></textarea>
+<button type="button" onclick="check()">Book Now</button>
+</form>
+<div style="text-align:center;margin-top:15px;background:#25D366;padding:12px;border-radius:6px"><a id="waLink" href="https://wa.me/263777146776" target="_blank" style="color:white;text-decoration:none;font-weight:bold">📱 Chat on WhatsApp</a></div>
+</section>
+<script>
+function upWA(){let s=document.getElementById('guide');let n=s.options[s.selectedIndex].text.split(' - ')[0];document.getElementById('waLink').href='https://wa.me/'+s.value;document.getElementById('waLink').innerText='📱 Chat with '+n+' on WhatsApp';}
+function check(){let p=document.getElementById('phone').value.trim();p=p.replace(/\s/g,'').replace(/\|/g,'');if(p.length<10||!p.startsWith('07')){alert('Please enter valid Zim number: e.g. 0777146776 (you typed: '+p+')');return;}let name=document.getElementById('name').value;let date=document.getElementById('date').value;if(!name||!date){alert('Fill name and date');return;}alert('SUCCESS! Booking saved! '+name+' - Guide: '+document.getElementById('guide').options[document.getElementById('guide').selectedIndex].text+' on '+date);}
+// Remove | character if you pasted by mistake
+document.getElementById('phone').addEventListener('input',function(){this.value=this.value.replace(/\|/g,'');});
+upWA();
+</script></body></html>
